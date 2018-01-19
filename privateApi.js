@@ -1,5 +1,6 @@
 const querystring = require('querystring');
 const request = require('request-promise');
+const crypto = require('crypto');
 
 const PrivateApi = ({ publicKey, secretKey }) => {
   const apiAddress = 'https://bitbay.net/API/Trading/tradingApi.php';
@@ -17,7 +18,7 @@ const PrivateApi = ({ publicKey, secretKey }) => {
 
     return {
       'API-Key': publicKey,
-      'API-Hash': require('crypto').createHmac(hashFunction, secretKey).update(qs).digest('hex')
+      'API-Hash': crypto.createHmac(hashFunction, secretKey).update(qs).digest('hex'),
     };
   };
 
