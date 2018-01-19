@@ -28,7 +28,6 @@ const PrivateApi = ({ publicKey, secretKey }) => {
 
     const qs = Buffer.from(prepareQuerystring(params));
     const headers = getHeaders(qs);
-    console.log(params, headers);
     return request.post(apiAddress, { form: params, headers: headers });
   };
 
